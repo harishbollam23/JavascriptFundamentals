@@ -28,3 +28,30 @@ Session storage and local storage have the same fallowing api to perform operati
 **removeItem** This method is used for removing data. It will accepts the key value and removes the data of provided key value.
 
 **clear**: This method is used to clear the complete data.
+
+## Example
+
+```
+class WebStorage {
+  constructor(storage) {
+    this.storage = storage;
+  }
+  setData(key, data) {
+    this.storage.setItem(key, JSON.stringify(data));
+  }
+  getData(key) {
+    return JSON.parse(this.storage.getItem(key));
+  }
+  removeData(key) {
+    this.storage.removeItem(key);
+  }
+  clearStorage() {
+    this.storage.clear();
+  }
+}
+
+const localStorageAPI = new WebStorage(localStorage);
+const sessionStorageAPI = new WebStorage(sessionStorage);
+localStorageAPI.setItem('name', 'harish')
+
+```
